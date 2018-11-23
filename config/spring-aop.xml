@@ -14,16 +14,18 @@
    </bean>
 
     <bean id = "audience" class="com.company.aop.Audience"></bean>
+    <bean id = "aroundAudience" class="com.company.aop.AroundAudience"></bean>
 
     <aop:config>
-        <aop:aspect ref="audience">
+        <aop:aspect ref="aroundAudience">
             <!-- 声明切入点 -->
             <aop:pointcut id="performance" expression="execution(* com.company.aop.Performer.perform(..))"></aop:pointcut>
-            <aop:before method="takeSeats" pointcut-ref="performance"></aop:before>
-            <aop:before method="turnOffCellPhones" pointcut-ref="performance"></aop:before>
+            <!--<aop:before method="takeSeats" pointcut-ref="performance"></aop:before>-->
+            <!--<aop:before method="turnOffCellPhones" pointcut-ref="performance"></aop:before>-->
 
-            <aop:after method="applaud" pointcut-ref="performance"></aop:after>
-            <aop:after-throwing method="demandRefund" pointcut-ref="performance"></aop:after-throwing>
+            <!--<aop:after-returning method="applaud" pointcut-ref="performance"></aop:after-returning>-->
+            <!--<aop:after-throwing method="demandRefund" pointcut-ref="performance"></aop:after-throwing>-->
+            <aop:around method="watchPerformance" pointcut-ref="performance"></aop:around>
         </aop:aspect>
     </aop:config>
 </beans>
