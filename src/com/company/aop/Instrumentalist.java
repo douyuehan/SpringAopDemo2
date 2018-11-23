@@ -26,6 +26,7 @@ public class Instrumentalist implements Performer {
     @Override
     public void perform() {
         System.out.println("演奏"+song+"曲目");
+        int op = 9/0;
         instrument.play();
     }
 }

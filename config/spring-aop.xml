@@ -13,5 +13,17 @@
        <property name="instrument" ref="guitar"></property>
    </bean>
 
+    <bean id = "audience" class="com.company.aop.Audience"></bean>
 
+    <aop:config>
+        <aop:aspect ref="audience">
+            <!-- 声明切入点 -->
+            <aop:pointcut id="performance" expression="execution(* com.company.aop.Performer.perform(..))"></aop:pointcut>
+            <aop:before method="takeSeats" pointcut-ref="performance"></aop:before>
+            <aop:before method="turnOffCellPhones" pointcut-ref="performance"></aop:before>
+
+            <aop:after method="applaud" pointcut-ref="performance"></aop:after>
+            <aop:after-throwing method="demandRefund" pointcut-ref="performance"></aop:after-throwing>
+        </aop:aspect>
+    </aop:config>
 </beans>
