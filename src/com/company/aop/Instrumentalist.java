@@ -28,11 +28,7 @@ public class Instrumentalist implements Performer {
 
         System.out.println("演奏"+song+"曲目");
         instrument.play();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
 
     }
 }

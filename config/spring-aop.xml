@@ -28,4 +28,18 @@
             <aop:around method="watchPerformance" pointcut-ref="performance"></aop:around>
         </aop:aspect>
     </aop:config>
+
+
+    <bean id = "userManager" class="com.company.aop.UserManagerImpl"></bean>
+    <bean id = "securityHandler" class="com.company.aop.SecurityHandler"></bean>
+
+    <aop:config>
+        <aop:aspect ref="securityHandler">
+            <aop:pointcut id="userpointcut" expression="execution(* com.company.aop.UserManager.*(..))"></aop:pointcut>
+            <aop:before method="checkSecurity" pointcut-ref="userpointcut"></aop:before>
+        </aop:aspect>
+
+
+    </aop:config>
+
 </beans>
